@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 const User = require("./userSchema")
+
+
 const accountSchema = mongoose.Schema({
     userId : {
-        type : mongoose.Schema.Types.ObjectId , 
+        type : mongoose.Schema.Types.ObjectId ,     // Like Foreign Key in SQL with used Refrence
         ref : 'User' , 
         required : true 
     },
