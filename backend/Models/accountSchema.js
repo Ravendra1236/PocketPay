@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const User = require("./userSchema")
 
 
-const accountSchema = mongoose.Schema({
+const accountSchema = new mongoose.Schema({
     userId : {
         type : mongoose.Schema.Types.ObjectId ,     // Like Foreign Key in SQL with used Refrence
         ref : 'User' , 
@@ -16,4 +16,4 @@ const accountSchema = mongoose.Schema({
 
 const Account = mongoose.model("Account" , accountSchema) ; 
 
-module.exports  = {Account}
+module.exports  = Account

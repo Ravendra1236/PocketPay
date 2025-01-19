@@ -3,10 +3,11 @@ const port = 3000 ;
 const app = express() ;
 const cors = require("cors") ;
 const mainRouter = require("./Routes/index")
-const userRouter = require("./Routes/userRouter")
+require("./db")
 
 app.use(cors()) ;
 app.use(express.json()) ;
+
 
 
 app.use("/api/v1" , mainRouter) ;

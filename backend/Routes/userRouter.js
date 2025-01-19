@@ -4,7 +4,7 @@ const zod = require("zod")
 const User = require("../Models/userSchema");
 const jwt = require("jsonwebtoken")
 const authMiddleware = require("../middleware");
-const { Account } = require("../Models/accountSchema");
+const Account= require("../Models/accountSchema");
 
 
 // SignUp: 
@@ -67,12 +67,12 @@ const signinBody = zod.object({
 })
 
 router.post("/signin", async (req, res) => {
-    const body = req.body ;
+    const body = req.body;
 
     const { success } = signinBody.safeParse(body);
     if (!success) {
-        return res.status(409).json({
-            message: "Email already taken / Incorrect inputs"
+        return res.status(400).json({
+            message: "Invalid email or password format"
         })
     }
 
@@ -81,20 +81,19 @@ router.post("/signin", async (req, res) => {
         password: body.password
     });
 
-    if (user) {
-        const token = jwt.sign({
-            userId: user._id
-        }, process.env.JWT_SECRET);
-  
-        res.json({
-            message : "Successfully signed in" ,
-            token: token
+    if (!user) {
+        return res.status(401).json({
+            message: "Invalid credentials"
         })
-        return;
     }
 
-    res.status(409).json({
-        message: "Error while logging in"
+    const token = jwt.sign({
+        userId: user._id
+    }, process.env.JWT_SECRET);
+
+    return res.json({
+        message: "Successfully signed in",
+        token: token
     })
 })
 
@@ -108,7 +107,7 @@ const updateBody = zod.object({
 router.put("/", authMiddleware, async (req, res) => {
     const { success } = updateBody.safeParse(req.body)
     if (!success) {
-        res.status(411).json({
+        return res.status(411).json({
             message: "Error while updating information"
         })
     }
