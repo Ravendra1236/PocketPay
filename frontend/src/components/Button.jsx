@@ -1,4 +1,4 @@
-export function Button({ label, onClick }) {
+function Button({ label, onClick }) {
   return (
     <button
       onClick={onClick}
@@ -9,3 +9,5 @@ export function Button({ label, onClick }) {
     </button>
   );
 }
+
+export default Button; // Default export
