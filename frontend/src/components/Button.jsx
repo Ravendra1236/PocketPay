@@ -10,4 +10,4 @@ function Button({ label, onClick }) {
   );
 }
 
-export default Button; // Default export
+export default Button; 

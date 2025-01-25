@@ -12,4 +12,4 @@ function BottomWarning({ label, buttonText, to }) {
 }
 
 
-export default BottomWarning;  // Default export
+export default BottomWarning; 
