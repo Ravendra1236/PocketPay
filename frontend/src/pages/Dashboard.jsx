@@ -15,7 +15,7 @@ const Dashboard = () => {
       navigate("/signin");
     } else {
       axios
-        .get("https://pocketpay-dytp.onrender.com/api/v1/account/balance", {
+        .get("https://pocketpay-07db.onrender.com/api/v1/account/balance", {
           headers: {
             Authorization: "Bearer " + userToken,
           },
@@ -32,7 +32,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Appbar />
-      
+
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="space-y-8">
@@ -58,9 +58,7 @@ const Dashboard = () => {
 
           {/* Users Section */}
           <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-lg font-medium text-gray-700 mb-4">
-              Users
-            </h2>
+            <h2 className="text-lg font-medium text-gray-700 mb-4">Users</h2>
             <div className="bg-white rounded-lg">
               <Users />
             </div>
@@ -82,4 +80,49 @@ const Dashboard = () => {
 
 export default Dashboard;
 
+// import { useEffect, useState } from "react";
+// import  Appbar  from "../components/Appbar";
+// import  Balance  from "../components/Balance";
+// import  Users  from "../components/Users";
+// import axios from "axios";
+// import { useNavigate } from "react-router-dom";
 
+// const Dashboard = () => {
+//   const [bal, setBal] = useState(0);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const userToken = localStorage.getItem("token");
+
+//     // Check if token exists in local storage
+//     if (!userToken) {
+//       navigate("/signin"); // Redirect to sign-in page if token doesn't exist
+//     } else {
+//       // Fetch balance if token exists
+//       axios
+//         .get("http://localhost:3000/api/v1/account/balance", {
+//           headers: {
+//             Authorization: "Bearer " + userToken,
+//           },
+//         })
+//         .then((response) => {
+//           setBal(response.data.balance);
+//         })
+//         .catch((error) => {
+//           navigate("/signin");
+//         });
+//     }
+//   }, [navigate]);
+
+//   return (
+//     <div>
+//       <Appbar />
+//       <div className="m-8">
+//         <Balance value={bal} />
+//         <Users />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Dashboard ;
