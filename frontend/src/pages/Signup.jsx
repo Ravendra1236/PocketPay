@@ -28,7 +28,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/user/signup",
+        "https://pocketpay-dytp.onrender.com/api/v1/user/signup",
         formData
       );
       localStorage.setItem("token", response.data.token);
