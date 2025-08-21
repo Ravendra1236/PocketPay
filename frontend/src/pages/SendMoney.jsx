@@ -20,7 +20,7 @@ const SendMoney = () => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        "https://pocketpay-07db.onrender.com/api/v1/account/transfer",
+        "https://pocketpay-1.onrender.com/api/v1/account/transfer",
         {
           to: receiverId,
           amount: parseInt(amount),

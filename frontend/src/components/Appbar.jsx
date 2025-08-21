@@ -12,7 +12,7 @@ const Appbar = () => {
       navigate("/signin");
     } else {
       axios
-        .get("http://localhost:3000/api/v1/user/getUser", {
+        .get("https://pocketpay-1.onrender.com/api/v1/user/getUser", {
           headers: {
             Authorization: "Bearer " + userToken,
           },

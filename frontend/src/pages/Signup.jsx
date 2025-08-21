@@ -27,7 +27,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        "https://pocketpay-07db.onrender.com/api/v1/user/signup",
+        "https://pocketpay-1.onrender.com/api/v1/user/signup",
         formData
       );
       localStorage.setItem("token", response.data.token);
