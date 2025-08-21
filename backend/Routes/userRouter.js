@@ -175,7 +175,3 @@ router.get("/getUser", authMiddleware, async (req, res) => {
 });
 
 module.exports = router;
-
-router.get("/signin", async (req, res) => {
-  // Handle GET request
-});

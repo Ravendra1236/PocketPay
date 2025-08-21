@@ -11,20 +11,21 @@ const Appbar = () => {
     if (!userToken) {
       navigate("/signin");
     } else {
-      axios.get("http://localhost:3000/api/v1/user/getUser", {
-        headers: {
-          Authorization: "Bearer " + userToken,
-        },
-      })
-      .then((response) => {
-        setUser(response.data);
-      })
-      .catch(() => {
-        localStorage.removeItem("token");
-        navigate("/signin");
-      });
+      axios
+        .get("http://localhost:3000/api/v1/user/getUser", {
+          headers: {
+            Authorization: "Bearer " + userToken,
+          },
+        })
+        .then((response) => {
+          setUser(response.data);
+        })
+        .catch(() => {
+          localStorage.removeItem("token");
+          navigate("/signin");
+        });
     }
-  }, []);
+  }, [navigate]);
 
   const signOutHandler = () => {
     localStorage.removeItem("token");
@@ -64,14 +65,14 @@ const Appbar = () => {
 
               {/* User Avatar */}
               <div className="relative">
-  <div className="h-10 w-10 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center transition-transform duration-200 hover:scale-105 cursor-pointer">
-    <span className="text-lg font-bold text-white">
-      {user?.firstName?.[0]?.toUpperCase()}
-    </span>
-  </div>
-  {/* Online Status Indicator */}
-  <span className="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-green-400 ring-2 ring-white"></span>
-</div>
+                <div className="h-10 w-10 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center transition-transform duration-200 hover:scale-105 cursor-pointer">
+                  <span className="text-lg font-bold text-white">
+                    {user?.firstName?.[0]?.toUpperCase()}
+                  </span>
+                </div>
+                {/* Online Status Indicator */}
+                <span className="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-green-400 ring-2 ring-white"></span>
+              </div>
             </div>
           </div>
         </div>
